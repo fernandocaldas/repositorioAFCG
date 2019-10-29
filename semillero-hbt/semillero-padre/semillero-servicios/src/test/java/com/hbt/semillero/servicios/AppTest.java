@@ -8,6 +8,7 @@ public class AppTest {
 	public void shouldAnswerWithTrue() {
 
 	}
+
 	@Test
 	public void primeraPU() {
 		Long sumando1 = 150L;
@@ -18,7 +19,7 @@ public class AppTest {
 		if (resultado == resultadoEsperado) {
 			Assert.assertEquals(resultado, resultadoEsperado);
 			resultadoEsperado = 200L;
-			Assert.assertEquals(resultado, resultadoEsperado);
+			Assert.assertNotEquals(resultado, resultadoEsperado);
 		}
 	}
 
@@ -35,8 +36,35 @@ public class AppTest {
 		return cadenaInvertida;
 
 	}
-	
+
+	@Test
 	public void pruebaInvertirCadena() {
-		invertirCadena("123456789");
+
+		String cadenaInvertidaResult = invertirCadena("123456789");
+		String cadenaInvertidaEsperada = "987654321";
+
+		if (cadenaInvertidaResult == cadenaInvertidaEsperada || cadenaInvertidaResult.equals(cadenaInvertidaEsperada)) {
+			
+			Assert.assertEquals(cadenaInvertidaResult, cadenaInvertidaEsperada);
+			
+			cadenaInvertidaEsperada = "";
+			Assert.assertNotEquals(cadenaInvertidaResult, cadenaInvertidaEsperada);
+			
+			cadenaInvertidaEsperada = null;
+			Assert.assertNotEquals(cadenaInvertidaResult, cadenaInvertidaEsperada);
+			
+			cadenaInvertidaEsperada = "123456789";
+			Assert.assertNotEquals(cadenaInvertidaResult, cadenaInvertidaEsperada);
+			
+			cadenaInvertidaEsperada = null;
+			Assert.assertNull(cadenaInvertidaEsperada);
+			
+			cadenaInvertidaEsperada = "987654321";
+			Assert.assertTrue(cadenaInvertidaResult.equals(cadenaInvertidaEsperada));
+			
+			Assert.assertNotNull(cadenaInvertidaResult);
+			
+		}
+
 	}
 }
