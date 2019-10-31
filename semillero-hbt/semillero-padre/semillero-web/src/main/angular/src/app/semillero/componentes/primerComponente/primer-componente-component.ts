@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 
-
 /**
- * @description Componenete gestionar el primer componente - Ejecricio Sesion 1 Angular
+ * @description Componente gestiona el primer-componente - Ejercicio Sesion 1 Angular 30102019
  * 
  * @author Alex Fernando Caldas Garcia <fernandocaldasg@gmail.com.co>
  */
@@ -13,8 +12,17 @@ import { Component } from '@angular/core';
 })
 export class PrimerComponenteComponent {
 
+    /**
+     *  Nombre - estudiante Semillero
+     */
     nombre: string = "Alex Fernando Caldas Garcia";
+    /**
+     *  Ciudad - estudiante Semillero
+     */
     ciudad: string = "Tunja";
+    /**
+     *  Repositorio - estudiante Semillero
+     */
     repositorio: string = "https://github.com/fernandocaldas/repositorioAFCG.git";
 
     constructor() {
