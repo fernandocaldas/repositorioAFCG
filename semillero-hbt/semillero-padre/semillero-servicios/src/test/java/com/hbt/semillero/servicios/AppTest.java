@@ -1,7 +1,5 @@
 package com.hbt.semillero.servicios;
 
-import java.util.List;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
