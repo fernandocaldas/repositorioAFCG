@@ -3,8 +3,10 @@ package com.hbt.semillero.servicios;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.hbt.semillero.dto.ComicDTO;
 import com.hbt.semillero.entidades.Comic;
 import com.hbt.semillero.entidades.EstadoEnum;
+import com.hbt.semillero.pojo.GestionarComicPOJO;
 
 public class AppTest {
 
@@ -12,7 +14,8 @@ public class AppTest {
 
 	}
 
-	@Test
+	
+	@Test(enabled = false)
 	public void primeraPU() {
 		Long sumando1 = 150L;
 		Long sumando2 = 50L;
@@ -26,6 +29,7 @@ public class AppTest {
 		}
 	}
 
+	
 	private String invertirCadena(String cadena) {
 
 		String cadenaInvertida = "";
@@ -40,7 +44,7 @@ public class AppTest {
 
 	}
 
-	@Test
+	@Test(enabled = false)
 	public void pruebaInvertirCadena() {
 
 		String cadenaInvertidaResult = invertirCadena("123456789");
@@ -71,18 +75,14 @@ public class AppTest {
 
 	}
 	
-	// TODO
-	/*
-	 * Pendiente hacer metodo que use el metodo ToString de la entidad Comic
-	 */
-	@Test
+	@Test(enabled = false)
 	public void pruebaComicToString() {
 		Comic comic = new Comic();
 		comic.setAutores("NombreAutor");
 		System.out.println("El metodo toString de Comic Contiene: "+ comic.toString());		
 	}
 	
-	@Test
+	@Test (enabled = false)
 	public void pruebaEstadoEnum() {
 		
 		//Devuelve un String con el nombre de la constante ACTIVO
@@ -105,5 +105,7 @@ public class AppTest {
 			System.out.println("Estado: "+estEnum.toString());
 		}
 		
-	}
+	}	
+
+	
 }

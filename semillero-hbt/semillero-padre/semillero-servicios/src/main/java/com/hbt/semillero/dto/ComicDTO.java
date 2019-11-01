@@ -33,7 +33,7 @@ public class ComicDTO implements Serializable {
 
 	private String coleccion;
 
-	private Integer numeroPagina;
+	private Integer numeroPaginas;
 
 	private BigDecimal precio;
 
@@ -81,7 +81,7 @@ public class ComicDTO implements Serializable {
 		this.editorial = editorial;
 		this.tematicaEnum = tematica;
 		this.coleccion = coleccion;
-		this.numeroPagina = numeroPagina;
+		this.numeroPaginas = numeroPagina;
 		this.precio = precio;
 		this.autores = autores;
 		this.color = color;
@@ -198,8 +198,8 @@ public class ComicDTO implements Serializable {
 	 * 
 	 * @return El numeroPagina asociado a la clase
 	 */
-	public Integer getNumeroPagina() {
-		return numeroPagina;
+	public Integer getNumeroPaginas() {
+		return numeroPaginas;
 	}
 
 	/**
@@ -207,8 +207,8 @@ public class ComicDTO implements Serializable {
 	 * 
 	 * @param numeroPagina El nuevo numeroPagina a modificar.
 	 */
-	public void setNumeroPagina(Integer numeroPagina) {
-		this.numeroPagina = numeroPagina;
+	public void setNumeroPaginas(Integer numeroPaginas) {
+		this.numeroPaginas = numeroPaginas;
 	}
 
 	/**
