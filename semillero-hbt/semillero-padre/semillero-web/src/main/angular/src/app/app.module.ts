@@ -16,6 +16,7 @@ import { PrimerComponenteComponent } from './semillero/componentes/primerCompone
 // DTOs
 export { ComicDTO } from './semillero/dto/comic.dto';
 export { ResultadoDTO } from './semillero/dto/resultado.dto';
+export { RevistaDTO } from './semillero/dto/revista.dto';
 
 @NgModule({
   declarations: [

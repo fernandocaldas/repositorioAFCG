@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 /**
  * @description Componenete gestionar comic, el cual contiene la logica CRUD
@@ -10,4 +10,10 @@ import { Component } from '@angular/core';
     templateUrl: './crear-persona-component.html',
     styleUrls: ['./crear-persona-component.css']
 })
-export class CrearPersonaComponent {}
+export class CrearPersonaComponent implements OnInit {
+
+    ngOnInit(){
+        
+    }
+  
+}
