@@ -17,120 +17,155 @@ export class PrimerComponenteComponent implements OnInit {
     /**
      *  Nombre - estudiante Semillero
      */
-    public nombre: string;
+    public nombreEst: string;
     /**
      *  Ciudad - estudiante Semillero
      */
-    public ciudad: string;
+    public ciudadEst: string;
     /**
      *  Repositorio - estudiante Semillero
      */
-    public repositorio: string;
+    public repositorioEst: string;
 
-    public listaRevistaDTO : Array<RevistaDTO>;
 
-    public revistaDTO : RevistaDTO;
+    /**
+     *  Lista de revistasDTO
+     */
+    public listaRevistaDTO: Array<RevistaDTO>;
 
-    public nombreRevista : string;
+    /**
+     *  revistaDTO
+     */
+    public revistaDTO: RevistaDTO;
+
+    /**
+     *  Nombre revistaDTO
+     */
+    public nombreRevista: string = null;
+
+    /**
+     *  variable para mostrar o ocultar mensaje
+     */
+    public mostrar: boolean = false;
 
     constructor() {
 
     }
 
-    ngOnInit() : void {
+    ngOnInit(): void {
         //Inicializar variables en OnInit siempre...
-        this.nombre = "Alex Fernando Caldas Garcia";
-        this.ciudad = "Tunja";
-        this.repositorio = "https://github.com/fernandocaldas/repositorioAFCG.git";
-       this.inicializarComponente();
-       this.nombreRevista = null;
+        this.nombreEst = "Alex Fernando Caldas Garcia";
+        this.ciudadEst = "Tunja";
+        this.repositorioEst = "https://github.com/fernandocaldas/repositorioAFCG.git";
+        this.inicializarComponente();
     }
 
-    public inicializarComponente() : Array<RevistaDTO> {
+    public inicializarComponente(): Array<RevistaDTO> {
 
         this.listaRevistaDTO = new Array<RevistaDTO>();
         this.revistaDTO = new RevistaDTO();
-        this.revistaDTO.id =1;
-        this.revistaDTO.nombre="batman";
-        this.revistaDTO.editorial="marvel";
-        this.revistaDTO.numeroPaginas=50;
-        this.revistaDTO.precio= 60,500.99;
-        this.revistaDTO.aColor=true;
-        this.revistaDTO.fechaVenta=new Date();
-        this.revistaDTO.estado="ACTIVO";
+        this.revistaDTO.id = 0;
+        this.revistaDTO.nombre = "batman";
+        this.revistaDTO.editorial = "marvel";
+        this.revistaDTO.numeroPaginas = 50;
+        this.revistaDTO.precio = 60, 500.99;
+        this.revistaDTO.aColor = true;
+        this.revistaDTO.fechaVenta = new Date();
+        this.revistaDTO.estado = "ACTIVO";
         this.listaRevistaDTO.push(this.revistaDTO);
 
         this.revistaDTO = new RevistaDTO();
-        this.revistaDTO.id =2;
-        this.revistaDTO.nombre="SuperMan";
-        this.revistaDTO.editorial="DC";
-        this.revistaDTO.numeroPaginas=60;
-        this.revistaDTO.precio= 75,600.99;
-        this.revistaDTO.aColor=true;
-        this.revistaDTO.fechaVenta=new Date();
-        this.revistaDTO.estado="ACTIVO";
+        this.revistaDTO.id = 1;
+        this.revistaDTO.nombre = "SuperMan";
+        this.revistaDTO.editorial = "DC";
+        this.revistaDTO.numeroPaginas = 60;
+        this.revistaDTO.precio = 75, 600.99;
+        this.revistaDTO.aColor = true;
+        this.revistaDTO.fechaVenta = new Date();
+        this.revistaDTO.estado = "ACTIVO";
         this.listaRevistaDTO.push(this.revistaDTO);
 
         this.revistaDTO = new RevistaDTO();
-        this.revistaDTO.id =3;
-        this.revistaDTO.nombre="Linterna Verde";
-        this.revistaDTO.editorial="DC";
-        this.revistaDTO.numeroPaginas=80;
-        this.revistaDTO.precio= 45,550.99;
-        this.revistaDTO.aColor=true;
-        this.revistaDTO.fechaVenta=new Date();
-        this.revistaDTO.estado="ACTIVO";
+        this.revistaDTO.id = 2;
+        this.revistaDTO.nombre = "Linterna Verde";
+        this.revistaDTO.editorial = "DC";
+        this.revistaDTO.numeroPaginas = 80;
+        this.revistaDTO.precio = 45, 550.99;
+        this.revistaDTO.aColor = true;
+        this.revistaDTO.fechaVenta = new Date();
+        this.revistaDTO.estado = "ACTIVO";
         this.listaRevistaDTO.push(this.revistaDTO);
 
         this.revistaDTO = new RevistaDTO();
-        this.revistaDTO.id =4;
-        this.revistaDTO.nombre="Spider Man";
-        this.revistaDTO.editorial="marvel";
-        this.revistaDTO.numeroPaginas=60;
-        this.revistaDTO.precio= 50,800.99;
-        this.revistaDTO.aColor=true;
-        this.revistaDTO.fechaVenta=new Date();
-        this.revistaDTO.estado="ACTIVO";
+        this.revistaDTO.id = 3;
+        this.revistaDTO.nombre = "Spider Man";
+        this.revistaDTO.editorial = "marvel";
+        this.revistaDTO.numeroPaginas = 60;
+        this.revistaDTO.precio = 50, 800.99;
+        this.revistaDTO.aColor = true;
+        this.revistaDTO.fechaVenta = new Date();
+        this.revistaDTO.estado = "ACTIVO";
         this.listaRevistaDTO.push(this.revistaDTO);
 
         this.revistaDTO = new RevistaDTO();
-        this.revistaDTO.id =5;
-        this.revistaDTO.nombre="batman vs superman";
-        this.revistaDTO.editorial="marvel";
-        this.revistaDTO.numeroPaginas=85;
-        this.revistaDTO.precio= 90,400.99;
-        this.revistaDTO.aColor=true;
-        this.revistaDTO.fechaVenta=new Date();
-        this.revistaDTO.estado="ACTIVO";
-        this.listaRevistaDTO.push(this.revistaDTO);  
+        this.revistaDTO.id = 4;
+        this.revistaDTO.nombre = "batman vs superman";
+        this.revistaDTO.editorial = "marvel";
+        this.revistaDTO.numeroPaginas = 85;
+        this.revistaDTO.precio = 90, 400.99;
+        this.revistaDTO.aColor = true;
+        this.revistaDTO.fechaVenta = new Date();
+        this.revistaDTO.estado = "ACTIVO";
+        this.listaRevistaDTO.push(this.revistaDTO);
 
         console.log(this.listaRevistaDTO);
 
         let lista = this.listaRevistaDTO;
         for (let i = 0; i < lista.length; i++) {
             const element = lista[i];
-            console.log(element);            
+            console.log(element);
         }
 
         return null;
     }
 
-    public eliminarRevistaDTO(index : number) : string {
+    /**
+     * Metodo que recibe el index para eliminar de la listarevistaDTO una revista
+     * @param index 
+     */
+    public eliminarRevistaDTO(index: number): void {
 
-        //Consultar por index no por atributo del objeto | revisar
-        this.nombreRevista = this.consultarRevistaDTO(index);
+        let eliminada = this.consultarRevistaDTO(index);
 
-        console.log("Elimino la revista #: "+index);
-        this.listaRevistaDTO.splice(index,1);
+        if (index > 0 && index !== null && eliminada !== false) {
 
-        return this.nombreRevista;
+            console.log("Elimino la revista #: " + index);
+            this.listaRevistaDTO.splice(index, 1);
+            this.mostrar = true;
+            console.log("mostrar vale: " + this.mostrar);
+
+        } else {
+            this.mostrar = false;
+            console.log("mostrar vale: " + this.mostrar);
+        }
     }
 
-    public consultarRevistaDTO(index : number) : string {
+    /**
+     * Metodo que recibe el index y consulta en el array listarevistaDTO para recuperar el nombre de una revista
+     * @param index 
+     */
+    public consultarRevistaDTO(index: number): boolean {
 
-        let revista = this.listaRevistaDTO.find(revistaDTO => revistaDTO.id === index);
-        alert("Consulto la revista #: "+revista.nombre);
-        return revista.nombre;
+        let revistaEliminada = this.listaRevistaDTO.find(revistaDTO => revistaDTO.id === index);
+        console.log("Revista consultada:  " + revistaEliminada);
+
+        if (revistaEliminada !== null && revistaEliminada !== undefined) {
+            this.nombreRevista = revistaEliminada.nombre;
+            return true;
+        } else {
+            alert("¡La revista # "+index+" no existe en la Lista!");
+            return false;
+        }
     }
 
 }

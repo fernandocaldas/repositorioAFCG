@@ -1,10 +1,40 @@
 <div class="Container">
     <br>
-    Estatico: <h6>Alex Fernando Caldas Garcia - Tunja - Github: <a>https://github.com/fernandocaldas/repositorioAFCG.git</a></h6>
-    Dinámico: <h6>{{ nombre + ' - ' +ciudad + '- Github: '+repositorio}}</h6>
+    <h6>{{ nombreEst + ' - ' + ciudadEst + '- Github: '+ repositorioEst}}</h6>
 
-    <pre>{{ listaRevistaDTO | json}}</pre>
+    <br>
+    <!-- <pre>{{ listaRevistaDTO | json}}</pre> -->
+    <table class="table table-condensed table-bordered">
+        <thead class="thead-dark text-ligth">
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Editorial</th>
+            <th scope="col">Número Pag.</th>
+            <th scope="col">Precio </th>
+            <th scope="col">A Color</th>
+            <th scope="col">FechaVenta</th>
+            <th scope="col">Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let revista of listaRevistaDTO">
+            <th scope="row">{{ revista.id}}</th>
+            <td>{{revista.nombre}}</td>
+            <td>{{revista.editorial}} </td>
+            <td>{{revista.numeroPaginas}}</td>
+            <td>{{revista.precio}}</td>
+            <td>{{revista.aColor}}</td>
+            <td>{{revista.fechaVenta}}</td>
+            <td>{{revista.estado}}</td>
+          </tr>
+        </tbody>
+      </table>
 
-    <button type="submit" class="btn btn-primary" (click)="eliminarRevistaDTO(3)">Eliminar Revista</button>
-    <div> {{ 'Se ha eliminado la revista: '+nombreRevista}}</div>
+    <button type="submit" class="btn btn-primary" (click)="eliminarRevistaDTO(3)">Eliminar Revista #3</button>
+    <br> 
+    <br>    
+    <div class="alert alert-success" role="alert" *ngIf="mostrar == true">
+        {{ 'Se ha eliminado la revista: '+nombreRevista}}
+    </div>
 </div>
