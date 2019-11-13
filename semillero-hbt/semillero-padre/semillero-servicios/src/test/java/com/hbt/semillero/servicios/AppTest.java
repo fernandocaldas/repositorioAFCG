@@ -105,7 +105,21 @@ public class AppTest {
 			System.out.println("Estado: "+estEnum.toString());
 		}
 		
-	}	
+	}
+	
+	@Test //(enabled = false)
+	public void pruebaTiposString() {
+		String s1 = "street";
+		String s2;
+		
+		s2 = new String ("street");
+		
+		
+		if(s1 == s2) {
+			Assert.assertEquals(s1, s2);
+		}
+		Assert.assertNotEquals(s1, s2);
+	}
 
 	
 }
