@@ -64,7 +64,7 @@ export class PrimerComponenteComponent implements OnInit {
 
         this.listaRevistaDTO = new Array<RevistaDTO>();
         this.revistaDTO = new RevistaDTO();
-        this.revistaDTO.id = 0;
+        this.revistaDTO.id = 101;
         this.revistaDTO.nombre = "batman";
         this.revistaDTO.editorial = "marvel";
         this.revistaDTO.numeroPaginas = 50;
@@ -75,7 +75,7 @@ export class PrimerComponenteComponent implements OnInit {
         this.listaRevistaDTO.push(this.revistaDTO);
 
         this.revistaDTO = new RevistaDTO();
-        this.revistaDTO.id = 1;
+        this.revistaDTO.id = 102;
         this.revistaDTO.nombre = "SuperMan";
         this.revistaDTO.editorial = "DC";
         this.revistaDTO.numeroPaginas = 60;
@@ -86,7 +86,7 @@ export class PrimerComponenteComponent implements OnInit {
         this.listaRevistaDTO.push(this.revistaDTO);
 
         this.revistaDTO = new RevistaDTO();
-        this.revistaDTO.id = 2;
+        this.revistaDTO.id = 103;
         this.revistaDTO.nombre = "Linterna Verde";
         this.revistaDTO.editorial = "DC";
         this.revistaDTO.numeroPaginas = 80;
@@ -97,18 +97,18 @@ export class PrimerComponenteComponent implements OnInit {
         this.listaRevistaDTO.push(this.revistaDTO);
 
         this.revistaDTO = new RevistaDTO();
-        this.revistaDTO.id = 3;
+        this.revistaDTO.id = 104;
         this.revistaDTO.nombre = "Spider Man";
         this.revistaDTO.editorial = "marvel";
         this.revistaDTO.numeroPaginas = 60;
         this.revistaDTO.precio = 50, 800.99;
-        this.revistaDTO.aColor = true;
+        this.revistaDTO.aColor = false;
         this.revistaDTO.fechaVenta = new Date();
         this.revistaDTO.estado = "ACTIVO";
         this.listaRevistaDTO.push(this.revistaDTO);
 
         this.revistaDTO = new RevistaDTO();
-        this.revistaDTO.id = 4;
+        this.revistaDTO.id = 105;
         this.revistaDTO.nombre = "batman vs superman";
         this.revistaDTO.editorial = "marvel";
         this.revistaDTO.numeroPaginas = 85;
@@ -137,7 +137,7 @@ export class PrimerComponenteComponent implements OnInit {
 
         let eliminada = this.consultarRevistaDTO(index);
 
-        if (index > 0 && index !== null && eliminada !== false) {
+        if (index >= 0 && index !== null && eliminada !== false) {
 
             console.log("Elimino la revista #: " + index);
             this.listaRevistaDTO.splice(index, 1);
@@ -156,7 +156,7 @@ export class PrimerComponenteComponent implements OnInit {
      */
     public consultarRevistaDTO(index: number): boolean {
 
-        let revistaEliminada = this.listaRevistaDTO.find(revistaDTO => revistaDTO.id === index);
+        let revistaEliminada = this.listaRevistaDTO[index];
         console.log("Revista consultada:  " + revistaEliminada);
 
         if (revistaEliminada !== null && revistaEliminada !== undefined) {
