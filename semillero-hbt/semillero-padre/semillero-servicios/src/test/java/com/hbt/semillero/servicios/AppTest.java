@@ -148,20 +148,5 @@ public class AppTest {
 //		System.out.println("Brand = "+brand);
 //	}
 	
-	@Test
-	public void testEjercicio3() {
-		
-		EjerciciosMaratonPojo e = new EjerciciosMaratonPojo();
-
-		System.out.println("Es numero "+5 +" es primo? "+e.numeroPrimo(5));
-		System.out.println("Es numero "+222 +" es primo? "+e.numeroPrimo(222));
-		System.out.println("Es numero "+0 +" es primo? "+e.numeroPrimo(0));
-		
-		Assert.assertEquals(e.numeroPrimo(5), true);
-		Assert.assertEquals(e.numeroPrimo(222), false);
-		Assert.assertEquals(e.numeroPrimo(0), false);
-
-		
-	}
 
 }
