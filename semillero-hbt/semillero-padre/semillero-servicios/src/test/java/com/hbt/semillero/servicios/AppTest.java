@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import com.hbt.semillero.dto.ComicDTO;
 import com.hbt.semillero.entidades.Comic;
 import com.hbt.semillero.entidades.EstadoEnum;
+import com.hbt.semillero.pojo.EjerciciosMaratonPojo;
 import com.hbt.semillero.pojo.GestionarComicPOJO;
 
 public class AppTest {
@@ -107,19 +108,76 @@ public class AppTest {
 		
 	}
 	
-	@Test //(enabled = false)
-	public void pruebaTiposString() {
-		String s1 = "street";
-		String s2;
+//	@Test //(enabled = false)
+//	public void pruebaTiposString() {
+//		String s1 = "street";
+//		String s2;
+//		
+//		s2 = new String ("street");
+//		
+//		
+//		if(s1 == s2) {
+//			Assert.assertEquals(s1, s2);
+//		}
+//		Assert.assertNotEquals(s1, s2);
+//	}
+	
+	
+//	public void pruebaEjecricio1() {
+//		 
+//		
+//		String A$B =null;
+//		String _helloword =null;
+//		String Public =null;
+//		
+//		Assert.assertNotNull(A$B);
+//		Assert.assertNotNull(_helloword);
+//		Assert.assertNotNull(_helloword);
+//		
+//		System.out.println("Opcion C: true: es una palabra reservada");
+//		
+//	}
+//	private static  String brand = "";
+//	private static  boolean empty = false;
+//	@Test
+//	public static void testejercicio2(){
+//		
+//		
+//		//WaterBottle wb = new WaterBottle();
+//		System.out.println("Empty ="+ empty);
+//		System.out.println("Brand = "+brand);
+//	}
+	
+	@Test
+	public void testEjercicio3() {
 		
-		s2 = new String ("street");
+		EjerciciosMaratonPojo e = new EjerciciosMaratonPojo();
 		
+		int num1 = 5;
+		int num2 = 222;
+		int num3 = 0;
 		
-		if(s1 == s2) {
-			Assert.assertEquals(s1, s2);
-		}
-		Assert.assertNotEquals(s1, s2);
-	}
+		System.out.println("Es numero "+num1 +" es primo? "+e.numeroPrimo(num1));
+		System.out.println("Es numero "+num2 +" es primo? "+e.numeroPrimo(num2));
+		System.out.println("Es numero "+num3 +" es primo? "+e.numeroPrimo(num3));
+		
+		Assert.assertEquals(e.numeroPrimo(num1), true);
+		Assert.assertEquals(e.numeroPrimo(num2), true);
+		Assert.assertEquals(e.numeroPrimo(num3), true);
 
+		
+	}
+	
+	public boolean numeroPrimo(int num) {
+		
+		int contador = 2;
+		boolean primo=true;
+		while ((primo) && (contador!=num)){
+		if (num % contador == 0)
+		primo = false;
+		contador++;
+		}
+		return primo;
+	}
 	
 }
