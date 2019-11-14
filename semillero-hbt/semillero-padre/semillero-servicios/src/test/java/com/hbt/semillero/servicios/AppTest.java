@@ -152,32 +152,16 @@ public class AppTest {
 	public void testEjercicio3() {
 		
 		EjerciciosMaratonPojo e = new EjerciciosMaratonPojo();
+
+		System.out.println("Es numero "+5 +" es primo? "+e.numeroPrimo(5));
+		System.out.println("Es numero "+222 +" es primo? "+e.numeroPrimo(222));
+		System.out.println("Es numero "+0 +" es primo? "+e.numeroPrimo(0));
 		
-		int num1 = 5;
-		int num2 = 222;
-		int num3 = 0;
-		
-		System.out.println("Es numero "+num1 +" es primo? "+e.numeroPrimo(num1));
-		System.out.println("Es numero "+num2 +" es primo? "+e.numeroPrimo(num2));
-		System.out.println("Es numero "+num3 +" es primo? "+e.numeroPrimo(num3));
-		
-		Assert.assertEquals(e.numeroPrimo(num1), true);
-		Assert.assertEquals(e.numeroPrimo(num2), true);
-		Assert.assertEquals(e.numeroPrimo(num3), true);
+		Assert.assertEquals(e.numeroPrimo(5), true);
+		Assert.assertEquals(e.numeroPrimo(222), false);
+		Assert.assertEquals(e.numeroPrimo(0), false);
 
 		
 	}
-	
-	public boolean numeroPrimo(int num) {
-		
-		int contador = 2;
-		boolean primo=true;
-		while ((primo) && (contador!=num)){
-		if (num % contador == 0)
-		primo = false;
-		contador++;
-		}
-		return primo;
-	}
-	
+
 }
