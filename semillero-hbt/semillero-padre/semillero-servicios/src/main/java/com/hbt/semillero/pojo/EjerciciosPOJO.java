@@ -13,7 +13,7 @@ import java.util.Scanner;
  * @author FERNANDO
  * @version
  */
-public class EjerciciosMaratonPojo {
+public class EjerciciosPOJO {
 
 	public boolean numeroPrimo(int num) {
 
@@ -136,5 +136,33 @@ public class EjerciciosMaratonPojo {
 	public void ejercicio9() throws Exception {
 		throw new Exception();
 	}
+	
+	/**
+	 * 
+	 * Metodo encargado de continuar la secuencia dada, 23,33,25,80,36
+	 * <b>Caso de Uso</b>
+	 * @author FERNANDO
+	 * 
+	 * @param num1
+	 * @param num2
+	 * @return
+	 */
+	
+	public String secuencia(String num1, String num2) {
+		int num8 = 8;
+		int num9 = 9;
+		
+		int numSec = Integer.parseInt(num1)+Integer.parseInt(num2);
+		String resultado = num1+num2;
+		if(num9+1 == numSec) {
+			System.out.println("Numero Interno siguiente.....: "+numSec);	
+			return resultado;
+		}else {
+			return "no hay valor";
+		}
+
+	}
+	
+
 
 }

@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import com.hbt.semillero.dto.ComicDTO;
 import com.hbt.semillero.entidades.Comic;
 import com.hbt.semillero.entidades.EstadoEnum;
-import com.hbt.semillero.pojo.EjerciciosMaratonPojo;
+import com.hbt.semillero.pojo.EjerciciosPOJO;
 import com.hbt.semillero.pojo.GestionarComicPOJO;
 
 public class AppTest {

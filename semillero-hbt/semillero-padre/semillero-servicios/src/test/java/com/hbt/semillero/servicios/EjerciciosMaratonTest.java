@@ -9,7 +9,7 @@ import java.util.Map;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.hbt.semillero.pojo.EjerciciosMaratonPojo;
+import com.hbt.semillero.pojo.EjerciciosPOJO;
 
 /**
  * <b>Descripción:<b> Clase que determina
@@ -22,7 +22,7 @@ public class EjerciciosMaratonTest {
 	@Test
 	public void testEjercicio3() {
 		
-		EjerciciosMaratonPojo e = new EjerciciosMaratonPojo();
+		EjerciciosPOJO e = new EjerciciosPOJO();
 
 		System.out.println("Es numero "+5 +" es primo? "+e.numeroPrimo(5));
 		System.out.println("Es numero "+222 +" es primo? "+e.numeroPrimo(222));
@@ -44,7 +44,7 @@ public class EjerciciosMaratonTest {
 	 *
 	 */
 	public void testEjercicio4() {
-		EjerciciosMaratonPojo e = new EjerciciosMaratonPojo();		
+		EjerciciosPOJO e = new EjerciciosPOJO();		
 		System.out.println("Fecha Resultado " + e.CalcularFecha("1992-07-23", 27));
 	}
 	
@@ -58,7 +58,7 @@ public class EjerciciosMaratonTest {
 	 *
 	 */
 	public void testEjercicio5() {
-		EjerciciosMaratonPojo e = new EjerciciosMaratonPojo();
+		EjerciciosPOJO e = new EjerciciosPOJO();
 		
 		int[] numeros = new int[4];
 		int[] resultado = new int[4];
@@ -105,7 +105,14 @@ public class EjerciciosMaratonTest {
 //		  System.out.println("Clave: " + key + " -> Valor: " + map.get(key));
 //		}
 	}
-	
-	
-	
+
+	@Test
+	public void testEjercicio10(){
+		EjerciciosPOJO e = new EjerciciosPOJO();
+		
+		String num = e.secuencia("5", "5");
+		
+		System.out.println("Numero siguiente: "+num.substring(0,1)+num.substring(1,2));
+		
+	}
 }
