@@ -25,7 +25,7 @@ public class ProveedorDTO implements Serializable {
 	private String id;
 	private String direccion;
 	private LocalDate fechaCreacion;
-	private Long idPersona;
+	private PersonaDTO idPersona;
 	private EstadoEnum estadoEnum;
 	private BigDecimal montoCredito;
 
@@ -46,7 +46,7 @@ public class ProveedorDTO implements Serializable {
 	 * @param estadoEnum
 	 * @param montoCredito
 	 */
-	public ProveedorDTO(String id, String direccion, LocalDate fechaCreacion, Long idPersona, EstadoEnum estadoEnum,
+	public ProveedorDTO(String id, String direccion, LocalDate fechaCreacion, PersonaDTO idPersona, EstadoEnum estadoEnum,
 			BigDecimal montoCredito) {
 		super();
 		this.id = id;
@@ -116,7 +116,7 @@ public class ProveedorDTO implements Serializable {
 	 * 
 	 * @return El idPersona asociado a la clase
 	 */
-	public Long getIdPersona() {
+	public PersonaDTO getIdPersona() {
 		return idPersona;
 	}
 
@@ -125,7 +125,7 @@ public class ProveedorDTO implements Serializable {
 	 * 
 	 * @param idPersona El nuevo idPersona a modificar.
 	 */
-	public void setIdPersona(Long idPersona) {
+	public void setIdPersona(PersonaDTO idPersona) {
 		this.idPersona = idPersona;
 	}
 

@@ -1,0 +1,45 @@
+<div class="container">
+    <form>
+        <h1>Detalle Proveedor</h1>
+        <hr>
+
+        <div class="row">
+            <div class="col-6">
+                <label for="nombreProveedor">Nombre:</label>
+                <input type="text" class="form-control"  value={{proveedor.persona.nombre}} readonly>
+            </div>
+
+            <div class="col-6">
+                <label for="editorialproveedor">Identificación:</label>
+                <input type="number" class="form-control" value={{proveedor.persona.identificacion}} readonly>
+            </div>
+        </div>
+
+        <div class="row">          
+            <div class="col-6">
+                <label for="direccion">Dirección:</label>
+                <input type="text" class="form-control" value={{proveedor.direccion}} readonly>
+            </div>
+            <div class="col-6">
+                <label for="montoCredito">Monto Crédito:</label>
+                <input type="number" class="form-control" value={{proveedor.montoCredito}} readonly>
+            </div>
+        </div>
+
+        <div class="row">            
+            <div class="col-6">
+                <label for="estado">Estado:</label>
+                <input type="text" class="form-control" value={{proveedor.estado}} readonly>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-6">
+                <span></span>
+            </div>
+            <div class="col-6 text-right">
+                <button type="button" class="btn btn-primary" [routerLink]="['/gestionar-proveedor']">Regresar</button>
+            </div>
+        </div>
+    </form>
+</div>

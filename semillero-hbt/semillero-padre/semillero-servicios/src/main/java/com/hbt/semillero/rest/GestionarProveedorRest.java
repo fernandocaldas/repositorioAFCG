@@ -15,7 +15,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-import com.hbt.semillero.dto.PersonaDTO;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hbt.semillero.dto.ProveedorDTO;
 import com.hbt.semillero.dto.ResultadoDTO;
 import com.hbt.semillero.ejb.IGestionarProveedorLocal;
@@ -54,21 +54,16 @@ public class GestionarProveedorRest {
 	@Path("/crear")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public ResultadoDTO crearProveedor(ProveedorDTO proveedorDTO, PersonaDTO personaDTO) {
+	public ResultadoDTO crearProveedor(ProveedorDTO proveedorDTO) {
+		
+		
 		System.out.println("Entro a crear proveedor....");
+		System.out.println("Valores proveedoorDTO: "+proveedorDTO.toString());
 		System.out.println("proveedorDTO: direccion..." + proveedorDTO.getDireccion());
-//		LocalDate fecha = LocalDate.now();
-//		PersonaDTO personaDTO = new PersonaDTO();
-//		personaDTO.setIdentificacion("1049663317");
-//		personaDTO.setNombre("Alex Caldas");
-//
-//		ProveedorDTO proveedorDTO = new ProveedorDTO();
-//		proveedorDTO.setDireccion("Calle 24 35 -80");
-//		proveedorDTO.setEstadoEnum(EstadoEnum.ACTIVO);
-//		proveedorDTO.setFechaCreacion(fecha);
-//		proveedorDTO.setMontoCredito(new BigDecimal(5000));
-
-		gestionarProveedorEJB.crearProveedor(proveedorDTO, personaDTO);
+		System.out.println("proveedorDTO: getEstadoEnum..." + proveedorDTO.getEstadoEnum());
+		System.out.println("proveedorDTO: getIdPersona getIdentificacion..." + proveedorDTO.getIdPersona().getIdentificacion());
+		System.out.println("proveedorDTO: getIdPersona getNombre..." + proveedorDTO.getIdPersona().getNombre());
+		gestionarProveedorEJB.crearProveedor(proveedorDTO);
 		ResultadoDTO resultadoDTO = new ResultadoDTO(Boolean.TRUE, "Proveedor creado exitosamente");
 		return resultadoDTO;
 

@@ -47,4 +47,12 @@ export class MenuComponent implements OnInit {
   public navegarGestionarCompra(): void {
     //WIP
   }
+
+  /**
+   * @description Metodo encargado de direccionar al componente de gestionar proveedor
+   * @author Alex Fernando Caldas Garcia <>
+   */
+  public navegarGestionarProveedor(): void {
+    this.router.navigate(['gestionar-proveedor']);
+  }
 }

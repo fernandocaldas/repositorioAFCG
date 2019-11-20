@@ -53,7 +53,7 @@ public class Proveedor implements Serializable {
 	 */
 	@Id
 	@SequenceGenerator(allocationSize = 1, name = "PROVEEDOR_SPID_GENERATOR", sequenceName = "SEQ_COMIC")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "COMIC_SCID_GENERATOR")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PROVEEDOR_SPID_GENERATOR")
 	@Column(name = "SPID")
 	public Long getId() {
 		return id;

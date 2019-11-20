@@ -7,7 +7,6 @@ import java.util.List;
 
 import javax.ejb.Local;
 
-import com.hbt.semillero.dto.PersonaDTO;
 import com.hbt.semillero.dto.ProveedorDTO;
 
 /**
@@ -31,7 +30,7 @@ public interface IGestionarProveedorLocal {
 	 * 
 	 * @param proveedorNuevo informacion nueva a crear
 	 */
-	public void crearProveedor(ProveedorDTO proveedorDTO,PersonaDTO personaDTO);
+	public void crearProveedor(ProveedorDTO proveedorDTO);
 
 	/**
 	 * 
@@ -70,5 +69,7 @@ public interface IGestionarProveedorLocal {
 	 * @return
 	 */
 	public List<ProveedorDTO> consultarProveedores();
+
+
 	
 }

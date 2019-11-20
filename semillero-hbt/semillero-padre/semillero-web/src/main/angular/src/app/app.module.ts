@@ -13,6 +13,8 @@ import { BienvenidaComponent } from './semillero/componentes/home/bienvenida-com
 import { CrearPersonaComponent } from './semillero/componentes/crearPersona/crear-persona-component';
 import { PrimerComponenteComponent } from './semillero/componentes/primerComponente/primer-componente-component';
 import { ConsultarComicComponent } from './semillero/componentes/gestionarComic/consultarComic/consultar-comic';
+import { GestionarProveedorComponent } from './semillero/componentes/gestionarProveedor/gestionar-proveedor.component';
+import { ConsultarProveedorComponent } from './semillero/componentes/gestionarProveedor/consultarProveedor/consultar-proveedor.component';
 
 // DTOs
 export { ComicDTO } from './semillero/dto/comic.dto';
@@ -27,7 +29,9 @@ export { RevistaDTO } from './semillero/dto/revista.dto';
     GestionarComicComponent,
     CrearPersonaComponent,
     PrimerComponenteComponent,
-    ConsultarComicComponent
+    ConsultarComicComponent,
+    GestionarProveedorComponent,
+    ConsultarProveedorComponent
   ],
   imports: [
     BrowserModule,

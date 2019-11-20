@@ -110,6 +110,7 @@ export class GestionarComicComponent implements OnInit {
 
        if (this.idComicActualizar !== null) {
         this.comic = new ComicDTO();
+        
             let id = this.listaComics[this.idComicActualizar].id;
           /*  this.listaComics[this.idComicActualizar].nombre = this.gestionarComicForm.controls.nombre.value;
             this.listaComics[this.idComicActualizar].editorial = this.gestionarComicForm.controls.editorial.value;

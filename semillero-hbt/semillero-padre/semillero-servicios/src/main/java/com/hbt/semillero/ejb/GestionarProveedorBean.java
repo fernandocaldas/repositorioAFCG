@@ -40,12 +40,12 @@ public class GestionarProveedorBean implements IGestionarProveedorLocal {
 	 */
 	@Override
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
-	public void crearProveedor(ProveedorDTO proveedorDTO, PersonaDTO personaDTO) {
+	public void crearProveedor(ProveedorDTO proveedorDTO) {
 		System.out.println("Entro a metodo crear proveedor en BEAN...");
-		Persona persona = convertirPersonaDTOToPersona(personaDTO);
+		//Persona persona = convertirPersonaDTOToPersona(personaDTO);
 		// em.persist(persona);
 
-		Proveedor proveedor = convertirProveedorDTOToProveedor(proveedorDTO, persona);
+		Proveedor proveedor = convertirProveedorDTOToProveedor(proveedorDTO);
 		em.persist(proveedor);
 
 	}
@@ -61,7 +61,7 @@ public class GestionarProveedorBean implements IGestionarProveedorLocal {
 		if (proveedorNuevo == null) {
 			proveedorModificar = em.find(Proveedor.class, id);
 		} else {
-			proveedorModificar = convertirProveedorDTOToProveedor(proveedorNuevo, null);
+			proveedorModificar = convertirProveedorDTOToProveedor(proveedorNuevo);
 		}
 		em.merge(proveedorModificar);
 
@@ -113,15 +113,26 @@ public class GestionarProveedorBean implements IGestionarProveedorLocal {
 
 		return persona;
 	}
+	
+	private PersonaDTO convertirPersonaToPersonaDTO(Persona persona) {
+		PersonaDTO personaDTO = new PersonaDTO();
+		if (persona.getId() != null) {
+			personaDTO.setId(persona.getId().toString());
+		}
+		personaDTO.setNombre(persona.getNombre());
+		personaDTO.setIdentificacion(persona.getIdentificacion());
 
-	private Proveedor convertirProveedorDTOToProveedor(ProveedorDTO proveedorDTO, Persona persona) {
+		return personaDTO;
+	}
+
+	private Proveedor convertirProveedorDTOToProveedor(ProveedorDTO proveedorDTO) {
 		Proveedor proveedor = new Proveedor();
 		if (proveedorDTO.getId() != null) {
 			proveedor.setId(Long.parseLong(proveedorDTO.getId()));
 		}
 		proveedor.setDireccion(proveedorDTO.getDireccion());
 		proveedor.setFechaCreacion(proveedorDTO.getFechaCreacion());
-		proveedor.setIdPersona(persona); // TODO Revisar..........
+		proveedor.setIdPersona(convertirPersonaDTOToPersona(proveedorDTO.getIdPersona())); // TODO Revisar..........
 		proveedor.setEstadoEnum(proveedorDTO.getEstadoEnum());
 		proveedor.setMontoCredito(proveedorDTO.getMontoCredito());
 
@@ -137,9 +148,11 @@ public class GestionarProveedorBean implements IGestionarProveedorLocal {
 		proveedorDTO.setDireccion(proveedor.getDireccion());
 		proveedorDTO.setEstadoEnum(proveedor.getEstadoEnum());
 		proveedorDTO.setFechaCreacion(proveedor.getFechaCreacion());
-	//	proveedorDTO.setIdPersona(idPersona); // TODO Revisar...
+		proveedorDTO.setIdPersona(convertirPersonaToPersonaDTO(proveedor.getIdPersona())); // TODO Revisar...
 		proveedorDTO.setMontoCredito(proveedor.getMontoCredito());
 		
 		return proveedorDTO;
 	}
+
+
 }

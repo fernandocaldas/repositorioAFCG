@@ -1,0 +1,100 @@
+<div class="container">
+    <form [formGroup]="gestionarProveedorForm">
+        <h1>Gestionar Proveedor</h1>
+        <hr>
+
+        <div class="row">
+            <div class="col-6">
+                <label for="nombreProveedor">Nombre:</label>
+                <input type="text" class="form-control" id="nombreProveedor" formControlName="nombre"
+                    [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }" maxlength="50">
+                <div *ngIf="submitted && f.nombre.errors">
+                    <span class="text-danger" *ngIf="f.nombre.errors.required">Campo requerido.</span>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <label for="editorialproveedor">Identificación:</label>
+                <input type="number" class="form-control" id="editorialproveedor" formControlName="identificacion">
+            </div>
+        </div>
+
+        <div class="row">          
+            <div class="col-6">
+                <label for="direccion">Dirección:</label>
+                <input type="text" class="form-control" id="direccion" formControlName="direccion">
+            </div>
+            <div class="col-6">
+                <label for="montoCredito">Monto Crédito:</label>
+                <input type="number" class="form-control" id="montoCredito" step=".01" formControlName="montoCredito">
+            </div>
+        </div>
+
+        <div class="row">            
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="estado">Estado:</label>
+                    <select class="form-control" id="estado" formControlName="estado">
+                        <option value="ACTIVO">Activo</option>
+                        <option value="INACTIVO">Inactivo</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <div class="row">
+            <div class="col-6">
+                <span></span>
+            </div>
+            <div class="col-6 text-right">
+                <button type="button" class="btn btn-primary" (click)="crearActualizarProveedor()">Crear/Editar</button>
+            </div>
+        </div>
+
+        <br>
+        <br>
+        <div class="alert alert-success" role="alert" *ngIf="mostrar == true">
+            {{ 'Se ha eliminado el Comic: '+nombreProveedor}}
+        </div>
+        <br>
+        <div class="row" [hidden]="listaProveedores.length === 0">
+            <div class="col-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Identificación</th>
+                            <th scope="col">Dirección</th>
+                            <th scope="col">fechaCreación</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">montoCredito</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!--date:"MM/dd/yy"
+                            | uppercase-->
+                        <tr *ngFor="let proveedor of listaProveedores;let i=index;">
+                            <th scope="row">{{proveedor.id}}</th>
+                            <td>{{proveedor.persona.nombre}}</td>
+                            <td>{{proveedor.persona.identificacion }}</td>
+                            <td>{{proveedor.direccion}}</td>
+                            <td>{{proveedor.fechaCreacion | date:"MM/dd/yy"}}</td>
+                            <td>{{proveedor.estado}}</td>
+                            <td>{{proveedor.montoCredito}}</td>
+                            <td>
+                                <i class="fas fa-search 2x ml-1" [routerLink]="['/consultar-proveedor',proveedor]"
+                                    title="Consultar"></i>
+                                <i class="fas fa-pencil-alt 2x ml-1" (click)="modificarProveedor(i)" title="Editar"></i>
+                                <i class="far fa-times-circle 2x ml-1" (click)="eliminarProveedor(i)"
+                                    title="Eliminar"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+
+</div>
