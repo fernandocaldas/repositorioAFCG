@@ -3,6 +3,7 @@ import { ComicDTO } from '../../dto/comic.dto';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { GestionarComicService } from '../../servicios/gestionar.comic.service';
 
 /**
  * @description Componenete gestionar comic, el cual contiene la logica CRUD
@@ -39,7 +40,7 @@ export class GestionarComicComponent implements OnInit {
     public submitted: boolean;
 
     /**
-     *  variable para mostrar o ocultar mensaje
+     *  variable para mostrar o ocultar mensaje Alert Boostrap
      */
     public mostrar: boolean = false;
 
@@ -57,7 +58,8 @@ export class GestionarComicComponent implements OnInit {
      * @author Diego Fernando Alvarez Silva <dalvarez@heinsohn.com.co>
      */
     constructor(private fb: FormBuilder,
-        private router: Router) {
+        private router: Router,
+        private gestionarComicService: GestionarComicService) {
         this.gestionarComicForm = this.fb.group({
             nombre: [null, Validators.required],
             editorial: [null],
@@ -76,20 +78,22 @@ export class GestionarComicComponent implements OnInit {
      */
     ngOnInit(): void {
         console.log("Ingreso al al evento oninit");
+        /*    this.comic = new ComicDTO();
+            this.listaComics = new Array<ComicDTO>();
+            this.idComic++;
+            this.comic.id = this.idComic + "";
+            this.comic.nombre = "Spider Man";
+            this.comic.editorial = "Marvel";
+            this.comic.tematica = "AVENTURAS";
+            this.comic.coleccion = "12-2019";
+            this.comic.numeroPaginas = 80;
+            this.comic.precio = 15000;
+            this.comic.autores = "Alex";
+            this.comic.color = true;
+            this.listaComics.push(this.comic); */
         this.comic = new ComicDTO();
         this.listaComics = new Array<ComicDTO>();
-        this.idComic++;
-        this.comic.id = this.idComic + "";
-        this.comic.nombre = "Spider Man";
-        this.comic.editorial = "Marvel";
-        this.comic.tematica = "AVENTURAS";
-        this.comic.coleccion = "12-2019";
-        this.comic.numeroPaginas = 80;
-        this.comic.precio = 15000;
-        this.comic.autores = "Alex";
-        this.comic.color = true;
-        this.listaComics.push(this.comic);
-
+        this.consultarComics();
     }
 
     /**
@@ -103,34 +107,64 @@ export class GestionarComicComponent implements OnInit {
         console.log("Contador idComic:" + this.idComic);
         console.log("ID ComicActualizar :" + this.idComicActualizar)
         console.log("Valor campo nombre actual:" + this.gestionarComicForm.controls.nombre);
-        
-            if (this.idComicActualizar !== null) {
-                this.listaComics[this.idComicActualizar].nombre = this.gestionarComicForm.controls.nombre.value;
-                this.listaComics[this.idComicActualizar].editorial = this.gestionarComicForm.controls.editorial.value;
-                this.listaComics[this.idComicActualizar].tematica = this.gestionarComicForm.controls.tematica.value;
-                this.listaComics[this.idComicActualizar].coleccion = this.gestionarComicForm.controls.coleccion.value;
-                this.listaComics[this.idComicActualizar].numeroPaginas = this.gestionarComicForm.controls.numeroPaginas.value;
-                this.listaComics[this.idComicActualizar].precio = this.gestionarComicForm.controls.precio.value;
-                this.listaComics[this.idComicActualizar].autores = this.gestionarComicForm.controls.autores.value;
-                this.listaComics[this.idComicActualizar].color = this.gestionarComicForm.controls.color.value;
-                this.idComicActualizar = null;
-            } else {
-                this.idComic++;
-                this.comic = new ComicDTO();
-                this.comic.id = this.idComic + "";
-                this.comic.nombre = this.gestionarComicForm.controls.nombre.value;
-                this.comic.editorial = this.gestionarComicForm.controls.editorial.value;
-                this.comic.tematica = this.gestionarComicForm.controls.tematica.value;
-                this.comic.coleccion = this.gestionarComicForm.controls.coleccion.value;
-                this.comic.numeroPaginas = this.gestionarComicForm.controls.numeroPaginas.value;
-                this.comic.precio = this.gestionarComicForm.controls.precio.value;
-                this.comic.autores = this.gestionarComicForm.controls.autores.value;
-                this.comic.color = this.gestionarComicForm.controls.color.value;
-                this.listaComics.push(this.comic);
-                console.log("Contador idComic++:" + this.idComic);
-            }            
-            this.limpiarFormulario();
-        
+
+       if (this.idComicActualizar !== null) {
+        this.comic = new ComicDTO();
+            let id = this.listaComics[this.idComicActualizar].id;
+          /*  this.listaComics[this.idComicActualizar].nombre = this.gestionarComicForm.controls.nombre.value;
+            this.listaComics[this.idComicActualizar].editorial = this.gestionarComicForm.controls.editorial.value;
+            this.listaComics[this.idComicActualizar].tematica = this.gestionarComicForm.controls.tematica.value;
+            this.listaComics[this.idComicActualizar].coleccion = this.gestionarComicForm.controls.coleccion.value;
+            this.listaComics[this.idComicActualizar].numeroPaginas = this.gestionarComicForm.controls.numeroPaginas.value;
+            this.listaComics[this.idComicActualizar].precio = this.gestionarComicForm.controls.precio.value;
+            this.listaComics[this.idComicActualizar].autores = this.gestionarComicForm.controls.autores.value;
+            this.listaComics[this.idComicActualizar].color = this.gestionarComicForm.controls.color.value;
+            this.listaComics[this.idComicActualizar].cantidad = 13; */
+            this.comic.id = id;
+            this.comic.nombre = this.gestionarComicForm.controls.nombre.value;
+            this.comic.editorial = this.gestionarComicForm.controls.editorial.value;
+            this.comic.tematica = this.gestionarComicForm.controls.tematica.value;
+            this.comic.coleccion = this.gestionarComicForm.controls.coleccion.value;
+            this.comic.numeroPaginas = this.gestionarComicForm.controls.numeroPaginas.value;
+            this.comic.precio = this.gestionarComicForm.controls.precio.value;
+            this.comic.autores = this.gestionarComicForm.controls.autores.value;
+            this.comic.color = this.gestionarComicForm.controls.color.value;
+            this.comic.cantidad = 17; // Dato quemado falta arreglar el Backend
+            this.gestionarComicService.modificarComic(id,"Ing. Alex",this.comic).subscribe(resultadoDTO => {
+                if (resultadoDTO.exitoso) {
+                    this.consultarComics();
+                    this.limpiarFormulario();
+                }
+            }, error => {
+                console.log(error);
+            });
+            this.idComicActualizar = null;
+        } else { 
+            // this.idComic++;
+            this.comic = new ComicDTO();
+           // this.comic.id = this.idComic + "";
+            this.comic.nombre = this.gestionarComicForm.controls.nombre.value;
+            this.comic.editorial = this.gestionarComicForm.controls.editorial.value;
+            this.comic.tematica = this.gestionarComicForm.controls.tematica.value;
+            this.comic.coleccion = this.gestionarComicForm.controls.coleccion.value;
+            this.comic.numeroPaginas = this.gestionarComicForm.controls.numeroPaginas.value;
+            this.comic.precio = this.gestionarComicForm.controls.precio.value;
+            this.comic.autores = this.gestionarComicForm.controls.autores.value;
+            this.comic.color = this.gestionarComicForm.controls.color.value;
+            this.comic.cantidad = 12; // Dato quemado falta arreglar el Backend
+            //      this.listaComics.push(this.comic);
+            //      console.log("Contador idComic++:" + this.idComic);
+            this.gestionarComicService.crearComic(this.comic).subscribe(resultadoDTO => {
+                if (resultadoDTO.exitoso) {
+                    this.consultarComics();
+                    this.limpiarFormulario();
+                }
+            }, error => {
+                console.log(error);
+            });
+        }
+        this.limpiarFormulario();
+
     }
 
     /**
@@ -193,7 +227,16 @@ export class GestionarComicComponent implements OnInit {
 
         if (posicion >= 0 && posicion !== null) {
             console.log("Elimino la revista #: " + posicion);
+            
             this.listaComics.splice(posicion, 1);
+            console.log("Elimino la revista idComic: " + comic.id);
+            this.gestionarComicService.eliminarComic(comic.id).subscribe(resultadoDTO => {
+                if (resultadoDTO.exitoso) {
+                    this.consultarComics();
+                }
+            }, error => {
+                console.log(error);
+            });
             this.nombreRevista = comic.nombre;
             this.mostrar = true;
             console.log("mostrar Alert: " + this.mostrar);
@@ -229,5 +272,13 @@ export class GestionarComicComponent implements OnInit {
         this.gestionarComicForm.controls.color.enable();
 
         this.idComicActualizar = posicion;
+    }
+
+    public consultarComics(): void {
+        this.gestionarComicService.consultarComics().subscribe(listaComics => {
+            this.listaComics = listaComics;
+        }, error => {
+            console.log(error);
+        });
     }
 }

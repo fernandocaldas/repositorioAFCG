@@ -113,7 +113,7 @@ public class GestionarComicBean implements IGestionarComicLocal {
 	 *      java.lang.String, com.hbt.semillero.dto.ComicDTO)
 	 */
 	@Override
-	// @TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	// TODO cual es el resultado de llamar a modificarComic
 	public void modificarComic(Long id, String nombre, ComicDTO comicNuevo) {
 		Comic comicModificar;
@@ -123,7 +123,7 @@ public class GestionarComicBean implements IGestionarComicLocal {
 		} else {
 			comicModificar = convertirComicDTOToComic(comicNuevo);
 		}
-		comicModificar.setNombre(nombre);
+		//comicModificar.setNombre(nombre);
 		// TODO hacer validacion si el comic a modificar llega con datos
 		em.merge(comicModificar);
 
