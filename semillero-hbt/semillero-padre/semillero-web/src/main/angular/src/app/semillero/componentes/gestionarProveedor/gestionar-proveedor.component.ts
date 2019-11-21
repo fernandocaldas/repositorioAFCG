@@ -143,6 +143,7 @@ export class GestionarProveedorComponent implements OnInit {
       this.proveedor.direccion = this.gestionarProveedorForm.controls.direccion.value;
       this.proveedor.estado = this.gestionarProveedorForm.controls.estado.value;
       this.proveedor.montoCredito = this.gestionarProveedorForm.controls.montoCredito.value;
+      this.proveedor.fechaCreacion = null;
       this.proveedor.persona = this.persona;
       this.gestionarProveedorService.crearProveedor(this.proveedor).subscribe(resultadoDTO => {
         debugger;
@@ -193,18 +194,16 @@ export class GestionarProveedorComponent implements OnInit {
   */
   public modificarProveedor(posicion: number): void {
     let proveedor = this.listaProveedores[posicion];
-
+    debugger;
     this.gestionarProveedorForm.controls.nombre.setValue(proveedor.persona.nombre);
     this.gestionarProveedorForm.controls.identificacion.setValue(proveedor.persona.identificacion);
     this.gestionarProveedorForm.controls.direccion.setValue(proveedor.direccion);
-    this.gestionarProveedorForm.controls.fechaCreacion.setValue(proveedor.fechaCreacion);
     this.gestionarProveedorForm.controls.estado.setValue(proveedor.estado);
     this.gestionarProveedorForm.controls.montoCredito.setValue(proveedor.montoCredito);
 
     this.gestionarProveedorForm.controls.nombre.enable();
     this.gestionarProveedorForm.controls.identificacion.enable();
     this.gestionarProveedorForm.controls.direccion.enable();
-    this.gestionarProveedorForm.controls.fechaCreacion.enable();
     this.gestionarProveedorForm.controls.estado.enable();
     this.gestionarProveedorForm.controls.montoCredito.enable();
 

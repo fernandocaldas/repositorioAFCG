@@ -38,7 +38,7 @@ public class GestionarProveedorTest {
 		ProveedorDTO proveedorDTO = new ProveedorDTO();
 		proveedorDTO.setDireccion("Calle 24 35 -80");
 		proveedorDTO.setEstadoEnum(EstadoEnum.ACTIVO);
-		proveedorDTO.setIdPersona(personaDTO);
+		proveedorDTO.setPersona(personaDTO);
 		proveedorDTO.setFechaCreacion(fecha);
 		proveedorDTO.setMontoCredito(new BigDecimal(5000));
 

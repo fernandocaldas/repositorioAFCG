@@ -44,7 +44,7 @@ public class Persona implements Serializable {
 	 * @return El id asociado a la clase
 	 */
 	@Id
-	@SequenceGenerator(allocationSize = 1, name = "PERSONA_SPID_GENERATOR", sequenceName = "SEQ_COMIC")
+	@SequenceGenerator(allocationSize = 1, name = "PERSONA_SPID_GENERATOR", sequenceName = "SEQ_PERSONA")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PERSONA_SPID_GENERATOR")
 	@Column(name = "SPID")
 	public Long getId() {

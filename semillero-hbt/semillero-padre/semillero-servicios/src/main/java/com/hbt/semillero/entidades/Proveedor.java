@@ -36,7 +36,7 @@ public class Proveedor implements Serializable {
 	private Long id;
 	private String direccion;
 	private LocalDate fechaCreacion;
-	private Persona idPersona;
+	private Persona persona;
 	private EstadoEnum estadoEnum;
 	private BigDecimal montoCredito;
 
@@ -52,7 +52,7 @@ public class Proveedor implements Serializable {
 	 * @return El id asociado a la clase
 	 */
 	@Id
-	@SequenceGenerator(allocationSize = 1, name = "PROVEEDOR_SPID_GENERATOR", sequenceName = "SEQ_COMIC")
+	@SequenceGenerator(allocationSize = 1, name = "PROVEEDOR_SPID_GENERATOR", sequenceName = "SEQ_PROVEEDOR")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PROVEEDOR_SPID_GENERATOR")
 	@Column(name = "SPID")
 	public Long getId() {
@@ -113,8 +113,8 @@ public class Proveedor implements Serializable {
 	 */
 	@ManyToOne
 	@JoinColumn(name = "SPIDPERSONA")
-	public Persona getIdPersona() {
-		return idPersona;
+	public Persona getPersona() {
+		return persona;
 	}
 
 	/**
@@ -122,8 +122,8 @@ public class Proveedor implements Serializable {
 	 * 
 	 * @param idPersona El nuevo idPersona a modificar.
 	 */
-	public void setIdPersona(Persona idPersona) {
-		this.idPersona = idPersona;
+	public void setPersona(Persona persona) {
+		this.persona = persona;
 	}
 
 	/**

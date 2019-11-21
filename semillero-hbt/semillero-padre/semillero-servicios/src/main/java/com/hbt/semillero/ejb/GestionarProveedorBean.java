@@ -3,6 +3,7 @@
  */
 package com.hbt.semillero.ejb;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,11 +42,15 @@ public class GestionarProveedorBean implements IGestionarProveedorLocal {
 	@Override
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 	public void crearProveedor(ProveedorDTO proveedorDTO) {
+		LocalDate fecha = LocalDate.now();
 		System.out.println("Entro a metodo crear proveedor en BEAN...");
-		//Persona persona = convertirPersonaDTOToPersona(personaDTO);
-		// em.persist(persona);
+
+		Persona persona = convertirPersonaDTOToPersona(proveedorDTO.getPersona());
+		em.persist(persona);
 
 		Proveedor proveedor = convertirProveedorDTOToProveedor(proveedorDTO);
+		proveedor.setFechaCreacion(fecha);
+		proveedor.setPersona(persona);
 		em.persist(proveedor);
 
 	}
@@ -55,15 +60,27 @@ public class GestionarProveedorBean implements IGestionarProveedorLocal {
 	 *      com.hbt.semillero.dto.ProveedorDTO)
 	 */
 	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	//TODO Revisar funcionamiento....
 	public void modificarProveedor(Long id, ProveedorDTO proveedorNuevo) {
 		Proveedor proveedorModificar;
-
+		Persona personaModificar;
+		
+		if(proveedorNuevo == null) {
+			personaModificar = em.find(Persona.class, id);
+		}else {
+			personaModificar = convertirPersonaDTOToPersona(proveedorNuevo.getPersona());
+		}
+		em.merge(personaModificar);
+		
 		if (proveedorNuevo == null) {
-			proveedorModificar = em.find(Proveedor.class, id);
-		} else {
+			proveedorModificar = em.find(Proveedor.class, id);			
+		} else {			
 			proveedorModificar = convertirProveedorDTOToProveedor(proveedorNuevo);
+			proveedorModificar.setPersona(personaModificar);			
 		}
 		em.merge(proveedorModificar);
+		
 
 	}
 
@@ -75,6 +92,9 @@ public class GestionarProveedorBean implements IGestionarProveedorLocal {
 		if (idProveedor != null) {
 			Proveedor proveedor = em.find(Proveedor.class, idProveedor);
 			em.remove(proveedor);
+
+			Persona persona = em.find(Persona.class, idProveedor);
+			em.remove(persona);
 		}
 	}
 
@@ -82,9 +102,10 @@ public class GestionarProveedorBean implements IGestionarProveedorLocal {
 	 * @see com.hbt.semillero.ejb.IGestionarProveedorLocal#consultarProveedor(java.lang.String)
 	 */
 	@Override
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 	public ProveedorDTO consultarProveedor(String idProveedor) {
 		Proveedor proveedor = em.find(Proveedor.class, Long.parseLong(idProveedor));
-		
+
 		ProveedorDTO proveedorDTO = convertirProveedorToProveedorDTO(proveedor);
 
 		return proveedorDTO;
@@ -94,6 +115,7 @@ public class GestionarProveedorBean implements IGestionarProveedorLocal {
 	 * @see com.hbt.semillero.ejb.IGestionarProveedorLocal#consultarProveedores()
 	 */
 	@Override
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 	public List<ProveedorDTO> consultarProveedores() {
 		List<ProveedorDTO> resultadosProveedorDTO = new ArrayList<ProveedorDTO>();
 		List<Proveedor> resultados = em.createQuery("select p from Proveedor p").getResultList();
@@ -113,7 +135,7 @@ public class GestionarProveedorBean implements IGestionarProveedorLocal {
 
 		return persona;
 	}
-	
+
 	private PersonaDTO convertirPersonaToPersonaDTO(Persona persona) {
 		PersonaDTO personaDTO = new PersonaDTO();
 		if (persona.getId() != null) {
@@ -132,27 +154,26 @@ public class GestionarProveedorBean implements IGestionarProveedorLocal {
 		}
 		proveedor.setDireccion(proveedorDTO.getDireccion());
 		proveedor.setFechaCreacion(proveedorDTO.getFechaCreacion());
-		proveedor.setIdPersona(convertirPersonaDTOToPersona(proveedorDTO.getIdPersona())); // TODO Revisar..........
+		proveedor.setPersona(convertirPersonaDTOToPersona(proveedorDTO.getPersona())); 
 		proveedor.setEstadoEnum(proveedorDTO.getEstadoEnum());
 		proveedor.setMontoCredito(proveedorDTO.getMontoCredito());
 
 		return proveedor;
 	}
-	
+
 	private ProveedorDTO convertirProveedorToProveedorDTO(Proveedor proveedor) {
 		ProveedorDTO proveedorDTO = new ProveedorDTO();
 		if (proveedor.getId() != null) {
 			proveedorDTO.setId(proveedor.getId().toString());
 		}
-		
+
 		proveedorDTO.setDireccion(proveedor.getDireccion());
 		proveedorDTO.setEstadoEnum(proveedor.getEstadoEnum());
 		proveedorDTO.setFechaCreacion(proveedor.getFechaCreacion());
-		proveedorDTO.setIdPersona(convertirPersonaToPersonaDTO(proveedor.getIdPersona())); // TODO Revisar...
+		proveedorDTO.setPersona(convertirPersonaToPersonaDTO(proveedor.getPersona()));
 		proveedorDTO.setMontoCredito(proveedor.getMontoCredito());
-		
+
 		return proveedorDTO;
 	}
-
 
 }

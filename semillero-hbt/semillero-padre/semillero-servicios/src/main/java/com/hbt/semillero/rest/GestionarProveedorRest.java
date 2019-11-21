@@ -15,7 +15,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hbt.semillero.dto.ProveedorDTO;
 import com.hbt.semillero.dto.ResultadoDTO;
 import com.hbt.semillero.ejb.IGestionarProveedorLocal;
@@ -28,7 +27,7 @@ import com.hbt.semillero.ejb.IGestionarProveedorLocal;
  */
 @Path("/GestionarProveedor")
 public class GestionarProveedorRest {
-
+	
 	/**
 	 * Atriburo que permite gestionar un proveedor
 	 */
@@ -56,13 +55,15 @@ public class GestionarProveedorRest {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public ResultadoDTO crearProveedor(ProveedorDTO proveedorDTO) {
 		
-		
 		System.out.println("Entro a crear proveedor....");
-		System.out.println("Valores proveedoorDTO: "+proveedorDTO.toString());
-		System.out.println("proveedorDTO: direccion..." + proveedorDTO.getDireccion());
-		System.out.println("proveedorDTO: getEstadoEnum..." + proveedorDTO.getEstadoEnum());
-		System.out.println("proveedorDTO: getIdPersona getIdentificacion..." + proveedorDTO.getIdPersona().getIdentificacion());
-		System.out.println("proveedorDTO: getIdPersona getNombre..." + proveedorDTO.getIdPersona().getNombre());
+		//System.out.println("Valores proveedoorDTO: "+proveedorDTO.toString());
+		System.out.println("proveedorDTO: direccion: " + proveedorDTO.getDireccion());
+		System.out.println("proveedorDTO: getEstadoEnum: " + proveedorDTO.getEstadoEnum());
+		System.out.println("proveedorDTO: getFechaCreacion: " + proveedorDTO.getFechaCreacion());
+		System.out.println("proveedorDTO: getMontoCredito: " + proveedorDTO.getMontoCredito());
+		System.out.println("proveedorDTO: getPersona: " + proveedorDTO.getPersona());
+		System.out.println("proveedorDTO: getPersona getIdentificacion: " + proveedorDTO.getPersona().getIdentificacion());
+		System.out.println("proveedorDTO: getPersona getNombre: " + proveedorDTO.getPersona().getNombre());
 		gestionarProveedorEJB.crearProveedor(proveedorDTO);
 		ResultadoDTO resultadoDTO = new ResultadoDTO(Boolean.TRUE, "Proveedor creado exitosamente");
 		return resultadoDTO;

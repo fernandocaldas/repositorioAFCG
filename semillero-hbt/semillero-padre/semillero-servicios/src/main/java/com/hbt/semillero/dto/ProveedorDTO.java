@@ -25,7 +25,7 @@ public class ProveedorDTO implements Serializable {
 	private String id;
 	private String direccion;
 	private LocalDate fechaCreacion;
-	private PersonaDTO idPersona;
+	private PersonaDTO persona;
 	private EstadoEnum estadoEnum;
 	private BigDecimal montoCredito;
 
@@ -46,13 +46,13 @@ public class ProveedorDTO implements Serializable {
 	 * @param estadoEnum
 	 * @param montoCredito
 	 */
-	public ProveedorDTO(String id, String direccion, LocalDate fechaCreacion, PersonaDTO idPersona, EstadoEnum estadoEnum,
+	public ProveedorDTO(String id, String direccion, LocalDate fechaCreacion, PersonaDTO persona, EstadoEnum estadoEnum,
 			BigDecimal montoCredito) {
 		super();
 		this.id = id;
 		this.direccion = direccion;
 		this.fechaCreacion = fechaCreacion;
-		this.idPersona = idPersona;
+		this.persona = persona;
 		this.estadoEnum = estadoEnum;
 		this.montoCredito = montoCredito;
 	}
@@ -116,8 +116,8 @@ public class ProveedorDTO implements Serializable {
 	 * 
 	 * @return El idPersona asociado a la clase
 	 */
-	public PersonaDTO getIdPersona() {
-		return idPersona;
+	public PersonaDTO getPersona() {
+		return persona;
 	}
 
 	/**
@@ -125,8 +125,8 @@ public class ProveedorDTO implements Serializable {
 	 * 
 	 * @param idPersona El nuevo idPersona a modificar.
 	 */
-	public void setIdPersona(PersonaDTO idPersona) {
-		this.idPersona = idPersona;
+	public void setPersona(PersonaDTO persona) {
+		this.persona = persona;
 	}
 
 	/**
